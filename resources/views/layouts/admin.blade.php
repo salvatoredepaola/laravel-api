@@ -43,8 +43,14 @@
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.index')}}">
+									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.index')}}">
 										<i class="fa-solid fa-image fa-lg fa-fw"></i> Posts
+									</a>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.create' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.create')}}">
+										<i class="fa-solid fa-add fa-lg fa-fw"></i> Aggiungi post
 									</a>
 								</li>
 

@@ -6,6 +6,7 @@ use App\http\Controllers\Controller;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -28,7 +29,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+
+        return view("admin.posts.create", compact('categories'));
     }
 
     /**
@@ -39,7 +42,13 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        //
+        $data = $request->validated();
+
+        $newPost = new Post();
+        $newPost->fill($data);
+        $newPost->save();
+
+        return to_route("admin.posts.show", $newPost);
     }
 
     /**
@@ -50,7 +59,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view("admin.posts.show", compact("post"));
     }
 
     /**
@@ -84,6 +93,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->route("admin.posts.index");
     }
 }
