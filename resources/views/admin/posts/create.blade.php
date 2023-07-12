@@ -29,13 +29,21 @@
                 <input class="form-control" type="text" name="image" id="image">
 
                 <label for="category_id">category</label>
-                <select class="form-control" name="category_id" id="category_id">
+                <select class="form-control mb-4" name="category_id" id="category_id">
+
                     <option value="" selected disabled>Categoria</option>
 
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
+
+                @foreach ($technologies as $i => $technology)
+                <div class="form-check">
+                    <input type="checkbox" value="{{$technology->id}}" name="technologies[]" id="technologies{{$i}}" class="form-check-input">
+                    <label for="technologies{{$i}}" class="form-check-label">{{$technology->name}}</label>
+                </div>
+                @endforeach
 
                 <input class="btn btn-primary form-control my-4" type="submit" value="invia">
 

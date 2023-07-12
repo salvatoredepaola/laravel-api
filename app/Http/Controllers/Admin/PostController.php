@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\Technology;
 
 class PostController extends Controller
 {
@@ -30,8 +31,9 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $technologies = Technology::all();
 
-        return view("admin.posts.create", compact('categories'));
+        return view("admin.posts.create", compact('categories','technologies'));
     }
 
     /**
@@ -47,6 +49,9 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
+
+        $newPost->technologies()->attach( $data["technologies"] );
+
 
         return to_route("admin.posts.show", $newPost);
     }
@@ -82,7 +87,18 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $data = $request->validated();
+
+        $post->update($data);
+
+        //Eliminiamo il collegamento con eventuali tags e poi lo ricreiamo
+        // $post->tags()->detach();
+        // $post->tags()->attach( $data->tags );
+
+        $post->technologies()->sync( $data->technologies );
+
+
+        return to_route("admin.posts.show", $post);
     }
 
     /**

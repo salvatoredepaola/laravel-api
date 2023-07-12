@@ -5,7 +5,11 @@
     @foreach ($posts as $post)
     <div class="col">
       <div class="card h-100">
+        @if ($post->image)
         <img src="{{$post->image}}" class="card-img-top" alt="{{$post->title}}">
+        @else
+        <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="{{$post->title}}">                
+        @endif
         <div class="card-body">
           <h5 class="card-title">{{$post->title}}</h5>
           {{-- <p class="card-text">{{$post->content}}</p> --}}

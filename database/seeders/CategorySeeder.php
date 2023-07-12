@@ -14,12 +14,14 @@ class CategorySeeder extends Seeder
      *
      * @return void
      */
-    public function run(Faker $faker)
+    public function run()
     {
-        for ($i=0; $i < 4 ; $i++) { 
-            $post = new Category();
-            $post->name = $faker->words(2, true);
-            $post->save();
+        $categories = [ "Cucina", "Motori", "Cronaca", "Sport", "Videogames", "Tecnologia" ];
+
+        foreach ($categories as $categoryName) {
+            $newCategory = new Category();
+            $newCategory->name = $categoryName;
+            $newCategory->save();
         }
     }
 }
