@@ -21,7 +21,7 @@
         </div>
         <div class="col">
             @if ($post->image)
-            <img src="{{$post->image}}" alt="{{$post->title}}">
+            <img src={{ asset("storage/" . $post->image) }} alt="{{$post->title}}">
             @else
             <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="{{$post->title}}">                
             @endif

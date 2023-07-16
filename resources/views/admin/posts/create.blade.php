@@ -16,22 +16,23 @@
                 </div>
             @endif
 
-            <form action="{{ route("admin.posts.store")}}" method="post">
+            <form action="{{ route("admin.posts.store")}}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <label for="title">title</label>
-                <input class="form-control" type="text" name="title" id="title">
+                <input class="form-control " type="text" name="title" id="title" >
 
                 <label for="content">content</label>
-                <textarea class="form-control" type="text" name="content" id="content"></textarea>
+                <textarea class="form-control " type="text" name="content" id="content" ></textarea>
 
                 <label for="image">image</label>
-                <input class="form-control" type="text" name="image" id="image">
+                {{-- <input class="form-control px-0" type="text" name="image" id="image" > --}}
+                <input type="file" name="image" id="image" class="form-control ">
 
                 <label for="category_id">category</label>
-                <select class="form-control mb-4" name="category_id" id="category_id">
+                <select class="form-control mb-4" name="category_id" id="category_id" >
 
-                    <option value="" selected disabled>Categoria</option>
+                    <option value="" selected disabled>Category</option>
 
                     @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
@@ -45,7 +46,7 @@
                 </div>
                 @endforeach
 
-                <input class="btn btn-primary form-control my-4" type="submit" value="invia">
+                <input class="btn bg-dark text-white form-control  my-4" type="submit" value="invia">
 
             </form>
         </div>

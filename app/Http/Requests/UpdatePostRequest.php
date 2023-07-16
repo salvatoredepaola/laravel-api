@@ -26,8 +26,8 @@ class UpdatePostRequest extends FormRequest
         return [
             "title" => "required|min:4|max:160",
             "content" => "max:65535",
-            "image" => ["nullable", "url|max:255"],
-            "category_id" => ["nullable", "exists:categories,id"]
+            "image" => ["nullable", "image|max:2048"],
+            "category_id" => "nullable|exists:categories,id",
         ];
     }
 

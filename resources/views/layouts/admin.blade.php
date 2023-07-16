@@ -26,37 +26,37 @@
 
 			<div class="container-fluid vh-100">
 				<div class="row h-100">
-					<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+					<nav id="sidebarMenu" class="col-md-3 col-lg-2 bg-dark d-md-block navbar-dark sidebar collapse border-end border-dark border-opacity-10">
 						<div class="position-sticky pt-3">
-							<ul class="nav flex-column">
+							<ul class="nav flex-column ">
 
 								<li class="nav-item">
-									<a class="nav-link text-white" href="/">
-										<i class="fa-solid fa-home-alt fa-lg fa-fw"></i> Home
+									<a class="p-3 nav-link text-white " href="/">
+										<i class="me-3 fa-solid fa-home-alt fa-lg fa-fw"></i> Home
 									</a>
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}" href="{{route('admin.dashboard')}}">
-										<i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+									<a class="p-3 rounded-3 nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? ' my_shadow ' : '' }}" href="{{route('admin.dashboard')}}">
+										<i class="me-3 fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
 									</a>
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.index')}}">
-										<i class="fa-solid fa-image fa-lg fa-fw"></i> Posts
+									<a class="p-3 rounded-3 nav-link text-white {{ Route::currentRouteName() == 'admin.posts.index' ? ' my_shadow ' : '' }}" href="{{route('admin.posts.index')}}">
+										<i class="me-3 fa-solid fa-image fa-lg fa-fw"></i> Posts
 									</a>
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link text-white {{ Route::currentRouteName() == 'admin.posts.create' ? 'bg-secondary' : '' }}" href="{{route('admin.posts.create')}}">
-										<i class="fa-solid fa-add fa-lg fa-fw"></i> Aggiungi post
+									<a class="p-3 rounded-3 nav-link text-white {{ Route::currentRouteName() == 'admin.posts.create' ? ' my_shadow ' : '' }}" href="{{route('admin.posts.create')}}">
+										<i class="me-3 fa-solid fa-add fa-lg fa-fw"></i> Aggiungi post
 									</a>
 								</li>
 
 								<li class="nav-item">
-									<a class="nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-										<i class="fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
+									<a class="p-3 nav-link text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+										<i class="me-3 fa-solid fa-sign-out-alt fa-lg fa-fw"></i> {{ __('Logout') }}
 									</a>
 									<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 										@csrf

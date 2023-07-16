@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Technology;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -45,6 +46,11 @@ class PostController extends Controller
     public function store(StorePostRequest $request)
     {
         $data = $request->validated();
+
+        $img_path = Storage::put('uploads', $data['image']);
+        $data['image'] = $img_path;
+
+        // dump($data);
 
         $newPost = new Post();
         $newPost->fill($data);
