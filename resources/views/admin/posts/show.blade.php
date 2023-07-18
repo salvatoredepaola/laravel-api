@@ -6,7 +6,7 @@
         <div class="col">
             <h1>{{$post->title}}</h1>
             <h3>Category: {{$post->category ? $post->category->name : "Nessuna categoria"}}</h3>
-            <h4>Technologies</h4>
+            <h4>Technologies:</h4>
             <ul>
                 @foreach ($post->technologies as $technology)
                 <li>{{$technology->name}}</li>

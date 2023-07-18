@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Technology;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,6 +19,7 @@ class PostSeeder extends Seeder
     public function run(Faker $faker)
     {
         $categories = Category::all(["id"]);
+        $technologies = Technology::all(["id"]);
 
         for ($i=0; $i < 10 ; $i++) { 
             $post = new Post();
@@ -25,7 +27,17 @@ class PostSeeder extends Seeder
             $post->content = $faker->text(500);
             $post->image = $faker->imageUrl(800, 600, $post->title, true);
             $post->category_id = $categories->random()->id;
+            
             $post->save();
+
+            $techNum = rand(0,5);
+            $postTech = [];
+            for ($x=0; $x < $techNum; $x++) {
+                $postTech[] = $technologies->random()->id;
+            }
+            
+            $post->technologies()->attach(array_unique($postTech));
+
         }
     }
 }

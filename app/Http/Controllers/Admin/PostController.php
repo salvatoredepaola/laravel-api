@@ -32,6 +32,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         $technologies = Technology::all();
 
         return view("admin.posts.create", compact('categories','technologies'));
@@ -47,7 +48,9 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
-        $img_path = Storage::put('uploads', $data['image']);
+        $img_path = $data["image"]->store("uploads");
+        // $img_path = Storage::put('uploads', $data['image']);
+
         $data['image'] = $img_path;
 
         // dump($data);
@@ -116,6 +119,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
+        
         return redirect()->route("admin.posts.index");
     }
 }

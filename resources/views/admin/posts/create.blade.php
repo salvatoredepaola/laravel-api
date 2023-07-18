@@ -38,7 +38,7 @@
                         <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
-
+                <div>Technologies</div>
                 @foreach ($technologies as $i => $technology)
                 <div class="form-check">
                     <input type="checkbox" value="{{$technology->id}}" name="technologies[]" id="technologies{{$i}}" class="form-check-input">
