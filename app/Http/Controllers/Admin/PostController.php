@@ -49,8 +49,8 @@ class PostController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('image')) {
-            $img_path = $data["image"]->store("uploads");
-            // $img_path = Storage::put('uploads', $data['image']);
+            // $img_path = $data["image"]->store("uploads");
+            $img_path = Storage::put('uploads', $data['image']);
     
             $data['image'] = $img_path;
         }
@@ -61,7 +61,9 @@ class PostController extends Controller
         $newPost->fill($data);
         $newPost->save();
 
-        $newPost->technologies()->attach( $data["technologies"] );
+        if ($request['technologies']){
+            $newPost->technologies()->attach( $data["technologies"] );
+        }
 
 
         return to_route("admin.posts.show", $newPost);
