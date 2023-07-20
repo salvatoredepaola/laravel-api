@@ -48,10 +48,12 @@ class PostController extends Controller
     {
         $data = $request->validated();
 
-        $img_path = $data["image"]->store("uploads");
-        // $img_path = Storage::put('uploads', $data['image']);
-
-        $data['image'] = $img_path;
+        if ($request->hasFile('image')) {
+            $img_path = $data["image"]->store("uploads");
+            // $img_path = Storage::put('uploads', $data['image']);
+    
+            $data['image'] = $img_path;
+        }
 
         // dump($data);
 
