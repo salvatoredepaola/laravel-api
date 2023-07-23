@@ -6,7 +6,7 @@
     <div class="col">
       <div class="card border-0  my_shadow h-100">
         @if ($post->image)
-        <img src="{{ asset('/storage') .'/' . $post->image }}" class="card-img-top" alt="{{$post->title}}">
+        <img src="{{ asset("storage/".$post->image) }}" class="card-img-top" alt="{{$post->title}}">
         @else
         <img src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg" alt="{{$post->title}}">                
         @endif

@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\ContactRequest;
 use App\Models\Technology;
 use Illuminate\Support\Facades\Storage;
 
@@ -60,6 +61,7 @@ class PostController extends Controller
         $newPost = new Post();
         $newPost->fill($data);
         $newPost->save();
+
 
         if ($request['technologies']){
             $newPost->technologies()->attach( $data["technologies"] );
